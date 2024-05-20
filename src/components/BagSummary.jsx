@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const BagSummary = () => {
   const bagItemIds = useSelector((store) => store.bag);
@@ -44,9 +45,11 @@ const BagSummary = () => {
           <span className="price-item-value">₹{finalPayment}</span>
         </div>
       </div>
-      <button className="btn-place-order">
-        <div className="css-xjhrni">PLACE ORDER</div>
-      </button>
+      <Link to="/OrderPlaced">
+        <button className="btn-place-order">
+          <div className="css-xjhrni">PLACE ORDER</div>
+        </button>
+      </Link>
     </div>
   );
 };
