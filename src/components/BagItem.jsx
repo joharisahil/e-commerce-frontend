@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { bagActions } from "../store/bagSlice";
-import { MdOutlineDelete } from "react-icons/md";
+import { RiDeleteBin5Fill } from "react-icons/ri";
 
 const BagItem = ({ item }) => {
   const dispatch = useDispatch();
@@ -39,7 +39,7 @@ const BagItem = ({ item }) => {
           handleCrossBtn();
         }}
       >
-        <MdOutlineDelete />
+        <RiDeleteBin5Fill />
       </div>
     </div>
   );
