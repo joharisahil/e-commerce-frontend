@@ -1,6 +1,14 @@
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { bagActions } from "../store/bagSlice";
 
 const PlacedOrder = () => {
+  const dispatch = useDispatch();
+
+  const handleBagOnPlacedOrder = () => {
+    dispatch(bagActions.emptyBag());
+  };
+
   return (
     <>
       <div class="card text-center">
@@ -9,7 +17,13 @@ const PlacedOrder = () => {
           <p class="card-text">
             Want to shop more than click on the below button
           </p>
-          <Link to="/" class="btn btn-primary">
+          <Link
+            to="/"
+            class="btn btn-primary"
+            onClick={() => {
+              handleBagOnPlacedOrder();
+            }}
+          >
             Go to Shop
           </Link>
         </div>
