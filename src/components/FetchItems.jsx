@@ -1,7 +1,20 @@
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { itemsActions } from "../store/itemSlice";
 
 const FetchItems = () => {
   const fetchStatus = useSelector((store) => store.fetchStatus);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (fetchStatus.fetchDone) return;
+    fetch("http://localhost:8080/items")
+      .then((res) => res.json())
+      .then(({ items }) => {
+        dispatch(itemsActions.addInitialItems(items[0]));
+      });
+  }, [fetchStatus]);
+
   return (
     <>
       <div>
